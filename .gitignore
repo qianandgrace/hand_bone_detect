@@ -1,0 +1,11 @@
+# runtime generated vector index
+datasets/
+yolov5/
+
+# python cache
+__pycache__/
+*.pyc
+
+# optional: local data
+*.log
+*.tmp
