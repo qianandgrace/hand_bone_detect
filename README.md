@@ -25,6 +25,27 @@ python transfer_file.py
 # 训练
 move mydata.yaml 到yolov5的data路径下
 python train.py --batch 16 --epochs 300 --data mydata.yaml --weights yolov5s.pt
+Fusing layers... 
+Model summary: 157 layers, 7029004 parameters, 0 gradients, 15.8 GFLOPs
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 8/8 
+                   all        238       4994      0.993      0.991      0.989      0.597
+                Radius        238        243      0.992      0.971      0.975      0.676
+                  Ulna        238        237      0.992      0.994      0.994      0.613
+              MCPFirst        238        237      0.987       0.98      0.983      0.543
+                   MCP        238        944      0.991      0.998      0.992      0.573
+       ProximalPhalanx        238       1195      0.996      0.992      0.994      0.602
+         MiddlePhalanx        238        948      0.995          1      0.991      0.557
+         DistalPhalanx        238       1190          1          1      0.995      0.615
+Results saved to runs\train\exp6
 
 python hand_test.py 训练分类模型
+
 # 部署
+flask 部署，可以通过上传手部x光图片判断年龄
+cd hand_bone_detect
+## 单张图片检测
+python detect_bone.py
+
+## 服务拉起
+python flask test_img.py
+效果如下图
