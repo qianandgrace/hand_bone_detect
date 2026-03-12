@@ -23,8 +23,8 @@ python transfer_file.py
 
 
 # 训练
-# Example: Train YOLOv5s on the COCO128 dataset for 3 epochs
+move mydata.yaml 到yolov5的data路径下
 python train.py --batch 16 --epochs 300 --data mydata.yaml --weights yolov5s.pt
 
-
+python hand_test.py 训练分类模型
 # 部署
