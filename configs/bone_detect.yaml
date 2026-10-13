@@ -1,0 +1,13 @@
+path: ../datasets/VOCdevkit
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: Radius
+  1: Ulna
+  2: MCPFirst
+  3: MCP
+  4: ProximalPhalanx
+  5: MiddlePhalanx
+  6: DistalPhalanx
