@@ -15,7 +15,7 @@ def test_split_dataset_creates_expected_layout(tmp_path):
     out = tmp_path / "out"
     counts = split_dataset(str(src_img), str(src_lbl), str(out), seed=0)
 
-    assert counts["train"] + counts["val"] + counts["test"] == 10
+    assert counts == {"train": 6, "val": 3, "test": 1}
     for split in ("train", "val", "test"):
         assert (out / "images" / split).is_dir()
         assert (out / "labels" / split).is_dir()

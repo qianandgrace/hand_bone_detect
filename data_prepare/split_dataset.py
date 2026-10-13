@@ -7,7 +7,7 @@ import shutil
 def split_dataset(images_dir, labels_dir, out_root, trainval=0.9, train=0.7, seed=0):
     """按比例划分并拷贝成 images/{train,val,test} 与 labels/{train,val,test}。"""
     random.seed(seed)
-    stems = [os.path.splitext(f)[0] for f in os.listdir(images_dir)]
+    stems = sorted(os.path.splitext(f)[0] for f in os.listdir(images_dir))
     num = len(stems)
     tv = int(num * trainval)
     tr = int(tv * train)
