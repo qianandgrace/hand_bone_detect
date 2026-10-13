@@ -1,6 +1,7 @@
 # runtime generated vector index
 datasets/
 yolov5/
+models/
 
 # python cache
 __pycache__/
