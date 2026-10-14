@@ -11,7 +11,7 @@ def _run(img_path, sex, conf, weights, classify_dir):
         detector = Detector(weights)
         classifiers = load_classifiers(classify_dir)
         report = predict_bone_age(img_path, sex, detector, classifiers, conf=conf)
-    except ValueError as e:
+    except (ValueError, FileNotFoundError) as e:
         print("错误: {}".format(e), file=sys.stderr)
         return 1
     print(report)

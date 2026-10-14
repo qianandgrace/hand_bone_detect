@@ -35,6 +35,7 @@ def load_classifiers(base_dir=None):
         net.conv1 = nn.Conv2d(1, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
         net.fc = nn.Linear(512, NUM_CLASSES[name])
         net.load_state_dict(torch.load(path, map_location=DEVICE))
+        net = net.to(DEVICE)
         net.eval()
         cls_models[name] = net
     return cls_models
@@ -45,7 +46,7 @@ def classify_crop(model, pil_img):
     im = trans_square(pil_img).convert("L")
     im = clahe_crop(np.array(im))
     im = data_transforms(Image.fromarray(im))
-    im = torch.unsqueeze(im, dim=0)
+    im = torch.unsqueeze(im, dim=0).to(DEVICE)
     with torch.no_grad():
         out = model(im)
     return int(out.argmax(dim=1))
